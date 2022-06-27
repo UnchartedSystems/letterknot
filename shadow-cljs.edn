@@ -7,5 +7,16 @@
  :dependencies
  [[reagent "1.1.1"]]
 
+ :dev-http {8080 "public"}
+
+ ;; Use Eric Normand's Tutorial!
  :builds
- {}}
+ {:app                         ;; name of build
+  {:target :browser            ;; target the browser
+   :output-dir "public/app/js" ;; output js files here
+   :asset-path "/app/js"       ;; used to construct the URL
+   :modules {:main             ;; we need one module
+             ;; start app/init ;; when the JS loads
+             {:init-fn counter.app/init}}}}
+
+ }
