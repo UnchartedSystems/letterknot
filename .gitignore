@@ -5,3 +5,4 @@
 /.shadow-cljs/builds/
 /.shadow-cljs/jar-manifest/
 /public/
+/.shadow-cljs/
