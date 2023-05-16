@@ -1,0 +1,21 @@
+;; Env Setup:
+;; npm install -D @tailwindcss/typography
+;; and more
+
+;; Running Build
+;; npx tailwindcss -i ./src/css/app.css -o ./public/app.css --watch
+
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[reagent "1.1.1"]]
+
+ :dev-http {8080 "public"}
+ :builds
+ {:letterknot
+  {:target :browser
+   :modules {:main {:init-fn letterknot.site/init}}
+   }}}
