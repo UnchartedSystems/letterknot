@@ -1,6 +1,7 @@
 (ns letterknot.site
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
+            [letterknot.game :as game]
             ))
 ;; npx tailwindcss -i ./src/css/app.css -o ./public/app.css --watch
 
@@ -14,7 +15,7 @@
    #_[nav-bar]
    #_[test/sample]
    #_[routing]
-   [:h1 "hello world"]])
+   [game/main]])
 
 (defn ^:dev/after-load start []
   (rdom/render
