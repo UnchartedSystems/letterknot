@@ -1,23 +1,22 @@
 (ns letterknot.game
   (:require [reagent.core :as r]
+            [re-pressed.core :as rp]
+            [re-frame.core :as rf]
             [reagent.dom :as rdom]))
 
-
+;https://clojureverse.org/t/capturing-key-presses-in-clojurescript-with-closure/6731
 
 (defn word []
+  (let [db-val @(rf/subscribe [:test])]
   [:div
    [:h1 "Testing!"]
-   [:input {:type "text" :maxlength 5 :class "w-24"}]
-   ])
+   [:input {:type "button"
+            :value db-val
+            :on-click #(rf/dispatch [:test (str db-val db-val)])
+            :class "w-24"}]
+   ]))
 
 
 (defn main []
   [:div
    [word]])
-
-;; function writeAtLast() {
-;;             var textbox = document.getElementById('text');
-;;             textbox.setSelectionRange(textbox.value.length, textbox.value.length);
-;;         }
-
-;; <input id="text" type="text" class="txtbox" onkeypress='writeAtLast()' onCopy="return false" onDrag="return false" onDrop="return false" onPaste="writeAtLast()" autocomplete=off />

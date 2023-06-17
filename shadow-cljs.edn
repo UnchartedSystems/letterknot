@@ -1,17 +1,15 @@
-;; Env Setup:
-;; npm install -D @tailwindcss/typography
-;; and more
-
 ;; Running Build
 ;; npx tailwindcss -i ./src/css/app.css -o ./public/app.css --watch
-
+;; https://github.com/gadfly361/re-pressed
 {:source-paths
  ["src/dev"
   "src/main"
   "src/test"]
 
  :dependencies
- [[reagent "1.1.1"]]
+ [[reagent "1.1.1"]
+  [re-frame "1.3.0"]
+  [re-pressed "0.3.2"]]
 
  :dev-http {8080 "public"}
  :builds

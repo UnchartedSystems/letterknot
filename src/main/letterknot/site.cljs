@@ -1,7 +1,10 @@
 (ns letterknot.site
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
+            [re-pressed.core :as rp]
+            [re-frame.core :as rf]
             [letterknot.game :as game]
+            [letterknot.events :as events]
             ))
 ;; npx tailwindcss -i ./src/css/app.css -o ./public/app.css --watch
 
@@ -16,7 +19,11 @@
    (.-body js/document)))
 
 (defn init []
+  (rf/dispatch-sync [:init-db])
+  (rf/dispatch-sync [::rp/add-keyboard-event-listener "keydown"])
   (start))
 
 (defn ^:dev/before-load stop []
   #_(js/console.log "stop"))
+
+

@@ -19,6 +19,9 @@ There's gonna be a lot of finangling input states:
 Just make input a single invisible form triggered by a button, and then have elements show corresponding letters! This solves a ton of problems:
  - Styling elements is easy compared to forms!
  - Can process input as a single word and slice single letters into elements
+ 
+### Even Another Option! (Maybe best option?)
+Just accept raw user input with no forms! Build up state of existing words! Accept Tab/Shift-Tab, Up/Down, etc. Requires the least finangling form inputs and the least questionable js interop. Requires more scripting in exchange.
 
 ### What about preset letters?
 
