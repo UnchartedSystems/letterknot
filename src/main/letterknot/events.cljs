@@ -10,14 +10,22 @@
 
 (rf/reg-event-db
  :test
- (fn [db [_ val]]
-   (assoc db :test val)))
+ (fn [db _]
+   (let [db-val (:test db)]
+     (assoc db :test (str db-val db-val)))))
+
 
 (rf/reg-sub
  :test
  (fn [db _]
    (:test db)))
 
+
+(let [db-val @(rf/subscribe [:test])]
+  (rf/dispatch
+   [::rp/set-keydown-rules
+    {:event-keys [[[:test]
+                   [{:keyCode 13}]]]}]))
 
 #_(re-frame/dispatch
  [::rp/set-keydown-rules

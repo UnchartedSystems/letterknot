@@ -12,7 +12,7 @@
    [:h1 "Testing!"]
    [:input {:type "button"
             :value db-val
-            :on-click #(rf/dispatch [:test (str db-val db-val)])
+            :on-click #(rf/dispatch [:test])
             :class "w-24"}]
    ]))
 
