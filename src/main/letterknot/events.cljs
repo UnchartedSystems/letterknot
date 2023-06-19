@@ -2,6 +2,9 @@
   (:require [re-pressed.core :as rp]
             [re-frame.core :as rf]))
 
+;; https://day8.github.io/re-frame/EffectfulHandlers/
+;; For
+
 (rf/reg-event-db
  :init-db
  (fn [_ _]
@@ -21,11 +24,10 @@
    (:test db)))
 
 
-(let [db-val @(rf/subscribe [:test])]
-  (rf/dispatch
-   [::rp/set-keydown-rules
-    {:event-keys [[[:test]
-                   [{:keyCode 13}]]]}]))
+(rf/dispatch
+ [::rp/set-keydown-rules
+  {:event-keys [[[:test]
+                 [{:keyCode 13}]]]}])
 
 #_(re-frame/dispatch
  [::rp/set-keydown-rules
