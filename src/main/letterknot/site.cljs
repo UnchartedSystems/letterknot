@@ -8,10 +8,17 @@
             ))
 ;; npx tailwindcss -i ./src/css/app.css -o ./public/app.css --watch
 
+(defn frame [text]
+  [:div.mx-5
+   [:div {:class [:container :grid :place-content-center :mt-20 "max-w-[73ch]"]}
+    text]])
+
 (defn root-element []
-  [:div.mx-5.my-5
-   [:div #_{:class [:container "max-w-[73ch]"]}
-    [game/main]]])
+  [:div
+   #_[nav-bar]
+    [frame [game/main]]
+   #_[other stuff]
+   ])
 
 (defn ^:dev/after-load start []
   (rdom/render
