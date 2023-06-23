@@ -3,13 +3,35 @@
             [re-frame.core :as rf]))
 
 ;; https://day8.github.io/re-frame/EffectfulHandlers/
-;; For
+
+; db structure
+#_{:puzzle [[4 \P] [2 0] [1 \N] [3 4] [0 \F] [1 2] [3 \C]]
+   :words {:w0 {:l0 \S
+                :l1 \H
+                :l2 \A
+                :l3 \R
+                :l4 \P}
+           :w1 {:l0 \S
+                :l1 \N
+                :l2 \A
+                :l3 nil
+                :l4 nil}}}
 
 (rf/reg-event-db
  :init-db
  (fn [_ _]
    {:puzzle []
-    :test   "hello"}))
+    :test   "hello"
+    :words {:w0 {:l0 \S
+                :l1 \H
+                :l2 \A
+                :l3 \R
+                :l4 \P}
+           :w1 {:l0 \S
+                :l1 \N
+                :l2 \A
+                :l3 \P
+                :l4 \S}}}))
 
 (rf/reg-event-db
  :test
@@ -23,6 +45,10 @@
  (fn [db _]
    (:test db)))
 
+(rf/reg-sub
+ :word
+ (fn [db [_ i]]
+   (i (:words db))))
 
 (rf/dispatch
  [::rp/set-keydown-rules

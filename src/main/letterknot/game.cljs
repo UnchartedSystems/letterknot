@@ -5,7 +5,7 @@
 
 ;https://clojureverse.org/t/capturing-key-presses-in-clojurescript-with-closure/6731
 
-(defn word []
+#_(defn word []
   [:div
    [:h1 "Testing!"]
    [:input {:type "button"
@@ -20,14 +20,15 @@
   [:div {:class "w-12 h-12 border-solid flex items-center justify-center font-sans"} ;TODO: move font config
    [:h2 letter]])
 
-(defn row []
+(defn word-row [word-index]
+  (let [word @(rf/subscribe [:word word-index])]
   [:div {:class "grid grid-rows-1 grid-cols-5 max-w-fit"}
-   [letter "H"]
-   [letter "E"]
-   [letter "L"]
-   [letter "L"]
-   [letter "O"]])
+   [letter (:l0 word)]
+   [letter (:l1 word)]
+   [letter (:l2 word)]
+   [letter (:l3 word)]
+   [letter (:l4 word)]]))
 
 (defn main []
   [:div
-   [row]])
+   [word-row :w0]])
