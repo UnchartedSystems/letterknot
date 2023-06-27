@@ -39,6 +39,15 @@
    (let [db-val (:test db)]
      (assoc db :test (str db-val db-val)))))
 
+(rf/reg-event-db
+ :change-word
+ (fn [db [_ row word]]
+   (let [word-map {:l0 (nth word 0)
+                   :l1 (nth word 1)
+                   :l2 (nth word 2)
+                   :l3 (nth word 3)
+                   :l4 (nth word 4)}]
+   (assoc-in db [:words row] word-map))))
 
 (rf/reg-sub
  :test

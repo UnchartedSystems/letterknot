@@ -31,4 +31,8 @@
 
 (defn main []
   [:div
-   [word-row :w0]])
+   [word-row :w0]
+   [word-row :w1]
+   [:div [:input {:type "button"
+                  :value "test"
+                  :on-click #(rf/dispatch [:change-word :w0 "WORLD"])}]]])
